@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\SietReals\\SietReals\\SietReals.csproj": {}
+    "C:\\Users\\Stanislav\\Desktop\\Новая папка\\PtPTI\\SietReals\\SietReals.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\SietReals\\SietReals\\SietReals.csproj": {
+    "C:\\Users\\Stanislav\\Desktop\\Новая папка\\PtPTI\\SietReals\\SietReals.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\SietReals\\SietReals\\SietReals.csproj",
+        "projectUniqueName": "C:\\Users\\Stanislav\\Desktop\\Новая папка\\PtPTI\\SietReals\\SietReals.csproj",
         "projectName": "SietReals",
-        "projectPath": "D:\\Projects\\SietReals\\SietReals\\SietReals.csproj",
+        "projectPath": "C:\\Users\\Stanislav\\Desktop\\Новая папка\\PtPTI\\SietReals\\SietReals.csproj",
         "packagesPath": "C:\\Users\\Stanislav\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\SietReals\\SietReals\\obj\\",
+        "outputPath": "C:\\Users\\Stanislav\\Desktop\\Новая папка\\PtPTI\\SietReals\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -14,6 +14,12 @@ namespace SietReals.Controllers
             DbService.Service().ChangeContexTo(contexName);
         }
 
+        public IActionResult GetCurrentImage() 
+        {
+            var imageTuple = DbService.Service().GetCurrentImage();
+            return Json(imageTuple);
+        }
+
         public IActionResult GetNextImage()
         {
             var imageTuple = DbService.Service().GetNextImage();
@@ -28,7 +34,8 @@ namespace SietReals.Controllers
     }
 
     public interface IDbContext
-    { 
+    {
+        ImageTuple CurrentImage { get;}
         ImageTuple GetNext();
         ImageTuple GetPrev();
         bool IsContextName(string contextName);
@@ -56,6 +63,15 @@ namespace SietReals.Controllers
         {
             return name == contextName;
         }
+        public ImageTuple CurrentImage 
+        {
+            get 
+            {
+                var _index = Math.Clamp(index, 0, tuples.Length - 1);
+                return tuples[_index];
+            }
+        }
+
 
         public ImageTuple GetNext() 
         {
@@ -68,7 +84,7 @@ namespace SietReals.Controllers
             return tuples[index];
         }
     }
-    public class DbService 
+    public class DbService
     {
         private static DbService instance;
         private IDbContext[] contexts;
@@ -79,39 +95,53 @@ namespace SietReals.Controllers
             connector = new DbConnector();
             contexts = new IDbContext[]
             {
-                new DbServiceContext("AR", connector.HelpArTuples),
-                new DbServiceContext("Soft", connector.HelpSoftwareTuples),
-                new DbServiceContext("Level", connector.TutorialLevelTuples),
-                new DbServiceContext("Rules", connector.TutorialRuleTuples),
-                new DbServiceContext("Difficult", connector.TutorialDifficultTuples)
+                new DbServiceContext("Default", new List<ImageTuple>()
+                    { new ImageTuple()
+                        {
+                            text = "Default",
+                            imageName = "def.jpg",
+                            ContextType = 0
+                        }
+                    }),
+                new DbServiceContext("AR", connector.Data.Where(tmp => tmp.ContextType == 1)),
+                new DbServiceContext("Soft", connector.Data.Where(tmp => tmp.ContextType == 2)),
+                new DbServiceContext("Level", connector.Data.Where(tmp => tmp.ContextType == 3)),
+                new DbServiceContext("Rules", connector.Data.Where(tmp => tmp.ContextType == 4)),
+                new DbServiceContext("Difficult", connector.Data.Where(tmp => tmp.ContextType == 5))
             };
             current = contexts[0];
         }
 
-        static DbService() 
+        static DbService()
         {
             instance = new DbService();
         }
 
-        public void ChangeContexTo(string contexName) 
+        public void ChangeContexTo(string contexName)
         {
             foreach (var contex in contexts)
             {
-                if (contex.IsContextName(contexName)) 
+                if (contex.IsContextName(contexName))
                 {
                     current = contex;
+                    contex.Reset();
                     return;
                 }
             }
         }
 
-        public ImageTuple GetNextImage() 
+        public ImageTuple GetNextImage()
         {
             return current.GetNext();
         }
-        public ImageTuple GetPrevImage() 
+        public ImageTuple GetPrevImage()
         {
             return current.GetPrev();
+        }
+
+        public ImageTuple GetCurrentImage()
+        {
+            return current.CurrentImage;
         }
 
         public static DbService Service()

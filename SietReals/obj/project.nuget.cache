@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "59O2RnZJEK/AW1cFcWO9SvUcCkeueOR5BCAt0IUBVURdgV8MlVTMvh37CxwbGZNtyVpu4qEBH7Vb0fldxM57xg==",
+  "dgSpecHash": "859vCdmaHKklx1OVasb4b7egJ+IDdgUFQ6RDiDiVIqBxfvCAi1suliYu6HKTMs9vvZFjOxStO19RVYjdnSnyzQ==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\SietReals\\SietReals\\SietReals.csproj",
+  "projectFilePath": "C:\\Users\\Stanislav\\Desktop\\Новая папка\\PtPTI\\SietReals\\SietReals.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Stanislav\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Stanislav\\.nuget\\packages\\microsoft.aspnet.mvc\\5.2.7\\microsoft.aspnet.mvc.5.2.7.nupkg.sha512",

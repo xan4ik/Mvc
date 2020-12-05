@@ -14,9 +14,10 @@ namespace SietReals.Controllers
             return View();
         }
 
-        public IActionResult Index() 
+        public IActionResult Index()
         {
-            return View();
+            DbService.Service().ChangeContexTo("Default");
+            return View(new DefaultLoadModel(DbService.Service().GetCurrentImage()));
         }
 
     }

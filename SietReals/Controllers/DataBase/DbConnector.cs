@@ -12,15 +12,16 @@ namespace SietReals.Controllers
         public string text { get; set; }
         public string imageName { get; set; }
         public string messaga { get; set; }
+        public int ContextType { get; set; }
     }
 
     public class DbConnector : DbContext
     {
-        public DbSet<ImageTuple> HelpArTuples { get; set; }
-        public DbSet<ImageTuple> HelpSoftwareTuples { get; set; }
-        public DbSet<ImageTuple> TutorialLevelTuples { get; set; }
-        public DbSet<ImageTuple> TutorialDifficultTuples { get; set; }
-        public DbSet<ImageTuple> TutorialRuleTuples { get; set; }
+        public DbSet<ImageTuple> Data { get; set; }
+        //public DbSet<ImageTuple> HelpSoftwareTuples { get; set; }
+        //public DbSet<ImageTuple> TutorialLevelTuples { get; set; }
+        //public DbSet<ImageTuple> TutorialDifficultTuples { get; set; }
+        //public DbSet<ImageTuple> TutorialRuleTuples { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,62 +30,62 @@ namespace SietReals.Controllers
 
         public void Init() // тестовые данные
         {
-            HelpArTuples.AddRange(
+            Data.AddRange(
                     new ImageTuple()
                     {
-                        Id = 1,
                         imageName = "ar.jpg",
-                        text = "AR"
+                        text = "AR",
+                        ContextType = 1
                     },
                     new ImageTuple()
                     {
-                        Id = 2,
                         imageName = "def.jpg",
-                        text = "AR"
+                        text = "AR",
+                        ContextType = 1
                     }
                 );
-            HelpSoftwareTuples.AddRange(
+            Data.AddRange(
                     new ImageTuple()
                     {
-                        Id = 1,
                         imageName = "piano.jpg",
-                        text = "Software"
+                        text = "Software",
+                        ContextType = 2
                     },
                     new ImageTuple()
                     {
-                        Id = 2,
                         imageName = "def.jpg",
-                        text = "Software"
+                        text = "Software",
+                        ContextType = 2
                     }
                 );
-            TutorialLevelTuples.AddRange(
+            Data.AddRange(
                     new ImageTuple()
                     {
-                        Id = 1,
                         imageName = "piano.jpg",
-                        text = "Level"
+                        text = "Level",
+                        ContextType = 3
                     }
                 );
-            TutorialRuleTuples.AddRange(
+            Data.AddRange(
                     new ImageTuple()
                     {
-                        Id = 1,
                         imageName = "ar.jpg",
-                        text = "Rule"
+                        text = "Rule",
+                        ContextType = 4
                     },
                     new ImageTuple()
                     {
-                        Id = 2,
                         imageName = "piano.jpg",
-                        text = "Rule"
+                        text = "Rule",
+                        ContextType = 4
                     }
                 );
-            TutorialDifficultTuples.AddRange(
+            Data.AddRange(
                     new ImageTuple()
                     {
-                        Id = 1,
                         imageName = "ar.jpg",
-                        text = "Difficult"
+                        text = "Difficult",
+                        ContextType = 5
                     }
                 );
 

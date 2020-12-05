@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model DefaultLoadModel;
 @using SietReals.Models;
 @using SietReals.Controllers;
 
@@ -28,9 +29,9 @@
 </div>
 <div class="formRight">
     <form class="infoArea">
-        <h1 id="header">Справка</h1>
+        <h1 id="header">@Model.Header</h1>
         <div class="imageArea">
-            <img src ="~/Images/def.jpg" id="image">
+            <img src = "~/Images/@Model.ImageName" id="image">
         </div>
         <div class="imageButtons">
             <span class="imageButton" onclick="PrevHint()">Предыдущая</span>

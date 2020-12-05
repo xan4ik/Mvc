@@ -1,9 +1,10 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model DefaultLoadModel;
 
 <script src ="~/js/redirect.js"></script>
-
+<script src="~/js/helpBehavior.js"></script>
 
 <div class="formLeft">
     <form class="buttonArea">
@@ -31,13 +32,13 @@
 </div>
 <div class="formRight">
     <form class="infoArea">
-        <h1 id="header">Header</h1>
+        <h1 id="header">@Model.Header</h1>
         <div class="imageArea">
-            <img src="~/Images/def.jpg" id="image">
+            <img src="~/Images/@Model.ImageName" id="image">
         </div>
         <div class="imageButtons">
-            <span class="imageButton">Предыдущая</span>
-            <span class="imageButton">Следующая</span>
+            <span class="imageButton" onclick="PrevHint()">Предыдущая</span>
+            <span class="imageButton" onclick="NextHint()">Следующая</span>
         </div>
     </form>
 </div>

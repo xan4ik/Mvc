@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SietReals.Controllers;
 
 namespace SietReals.Migrations
 {
     [DbContext(typeof(DbConnector))]
-    partial class DbConnectorModelSnapshot : ModelSnapshot
+    [Migration("20201205104413_seed")]
+    partial class seed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,9 +27,6 @@ namespace SietReals.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("ContextType")
-                        .HasColumnType("int");
-
                     b.Property<string>("imageName")
                         .HasColumnType("nvarchar(max)");
 
@@ -39,8 +38,10 @@ namespace SietReals.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Data");
+                    b.ToTable("ImageTuple");
                 });
+
+            (new DbConnector()).Init();
 #pragma warning restore 612, 618
         }
     }
